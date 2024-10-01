@@ -11,12 +11,12 @@
 
 <Pane fx:id="idPaneRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="857.0" style="-fx-background-color: #71bba7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto2juan.Controller.MainController">
    <children>
-      <TextField fx:id="txtNombreInicioSesion" layoutX="118.0" layoutY="154.0" promptText="Nombre de usuario" style="-fx-background-color: #ffffff;">
+      <TextField fx:id="txtCorreoInicioSesion" layoutX="118.0" layoutY="154.0" promptText="Correo Electrónico" style="-fx-background-color: #ffffff;">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtContraseñaInicio" layoutX="118.0" layoutY="214.0" promptText="Contraseña" style="-fx-background-color: #ffffff;">
+      <TextField fx:id="txtContraseñaInicioSesion" layoutX="118.0" layoutY="214.0" promptText="Contraseña" style="-fx-background-color: #ffffff;">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -28,7 +28,7 @@
       </Label>
       <Pane layoutX="363.0" layoutY="-8.0" prefHeight="477.0" prefWidth="501.0" style="-fx-background-color: #beccc8;">
          <children>
-            <Button fx:id="idButtonCrear" disable="true" layoutX="199.0" layoutY="395.0" mnemonicParsing="false" onAction="#onRegistrarmeClick" prefHeight="38.0" prefWidth="113.0" text="Registrarme">
+            <Button fx:id="idButtonCrear" layoutX="199.0" layoutY="395.0" mnemonicParsing="false" onAction="#onRegistrarmeClick" prefHeight="38.0" prefWidth="113.0" text="Registrarme">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -36,7 +36,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <TextField fx:id="txtNombreCrear" layoutX="176.0" layoutY="152.0" promptText="Nombre de Usuario" style="-fx-background-color: #ffffff;">
+            <TextField fx:id="txtNombreCrear" layoutX="176.0" layoutY="152.0" promptText="Nombre Completo" style="-fx-background-color: #ffffff;">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -68,7 +68,7 @@
             </CheckBox>
          </children>
       </Pane>
-      <Button fx:id="idButtonInicio" disable="true" layoutX="141.0" layoutY="289.0" mnemonicParsing="false" onAction="#onInicioSesionClick" prefHeight="38.0" prefWidth="113.0" text="Iniciar Sesión">
+      <Button fx:id="idButtonInicio" layoutX="141.0" layoutY="289.0" mnemonicParsing="false" onAction="#onInicioSesionClick" prefHeight="38.0" prefWidth="113.0" text="Iniciar Sesión">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
