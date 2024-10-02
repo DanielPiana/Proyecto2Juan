@@ -9,8 +9,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String contraseña, String correo) {
-        this.id = id;
+    public Usuario(String nombre, String contraseña, String correo) {
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.correo = correo;
