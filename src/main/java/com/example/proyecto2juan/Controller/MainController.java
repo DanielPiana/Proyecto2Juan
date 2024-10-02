@@ -88,7 +88,7 @@ public class MainController implements Initializable {
         } else {
             //Primero ciframos la contraseña para poder contrastarla con la de la base de datos
             String contraseñaCifrada = DigestUtils.sha256Hex(txtContraseñaInicioSesion.getText());
-            System.out.println("cifrafo de contraseña --> " + contraseñaCifrada);
+            //System.out.println("cifrafo de contraseña --> " + contraseñaCifrada);
             //Creamos usuario con el correo y la contraseña cifrada
             Usuario usuario = new Usuario(txtCorreoInicioSesion.getText(),contraseñaCifrada);
             //Usamos metodo de buscar usuario a ver si existe en la base de datos, si existe, cargamos nuevo fxml, si no existe
