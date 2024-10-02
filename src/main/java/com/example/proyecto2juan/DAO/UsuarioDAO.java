@@ -2,6 +2,7 @@ package com.example.proyecto2juan.DAO;
 
 import com.example.proyecto2juan.Main;
 import com.example.proyecto2juan.domain.Usuario;
+import com.mysql.cj.protocol.Resultset;
 
 import java.io.IOException;
 import java.sql.*;
@@ -9,30 +10,11 @@ import java.util.Properties;
 
 public class UsuarioDAO {
 
-    private Connection conexion;
 
-    public  void conectar() throws ClassNotFoundException, SQLException, IOException {
-        Properties configuration = new Properties();
-        Main.class.getResourceAsStream("Configuration/database.properties");
-        String host = configuration.getProperty("host");
-        String port = configuration.getProperty("port");
-        String name = configuration.getProperty("name");
-        String username = configuration.getProperty("username");
-        String password = configuration.getProperty("password");
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + name + "?serverTimezone=UTC",
-                username, password);
-    }
-    public  void desconectar() throws SQLException {
-        conexion.close();
-    }
-
-
-    public  void añadirUsuario(Usuario usuario) throws SQLException{
+    public static void añadirUsuario(Connection con,Usuario usuario) throws SQLException{
         String sql ="INSERT INTO USUARIOS (NOMBREUSUARIO,CONTRASEÑA,CORREO) VALUES (?,?,?)";
 
-        PreparedStatement statement =conexion.prepareStatement(sql);
+        PreparedStatement statement =con.prepareStatement(sql);
         statement.setString(1, usuario.getNombre());
         statement.setString(2,usuario.getContraseña());
         statement.setString(3, usuario.getCorreo());
@@ -40,28 +22,37 @@ public class UsuarioDAO {
     }
 
 
-    public  void eliminarUsuario(Usuario usuario) throws SQLException{
+    public static void eliminarUsuario(Connection con,Usuario usuario) throws SQLException{
         String sql = "DELETE FROM USUARIOS WHERE CORREO = ?";
 
-        PreparedStatement statement = conexion.prepareStatement(sql);
+        PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1,usuario.getCorreo());
         statement.executeUpdate();
     }
 
 
-    public  boolean buscarUsuarioLogin(Usuario usuario) throws SQLException{
-        String sql = "SELECT * FROM USUARIO WHERE CORREO = ? AND CONTRASEÑA = ?";
+    public static boolean buscarUsuarioLogin(Connection con,Usuario usuario) {
+        String sql = "SELECT * FROM USUARIOS WHERE CORREO = ? AND CONTRASEÑA = ?";
+        try {
+            PreparedStatement statement = con.prepareStatement(sql);
 
-        PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1,usuario.getCorreo());
+            statement.setString(2,usuario.getContraseña());
 
-        ResultSet resultado = statement.executeQuery();
+            ResultSet resultado = statement.executeQuery();
 
-        return resultado.next();
+            return resultado.next();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+
+        return false;
     }
-    public boolean comprobarContraseñaCifrada(String contraseña) throws SQLException{
-        String sql = "SELECT * FROM USUARIO WHERE CONTRASEÑA = ?";
-        PreparedStatement statement = conexion.prepareStatement(sql);
-
+    public static boolean comprobarContraseñaCifrada(Connection con,String contraseña) throws SQLException{
+        String sql = "SELECT * FROM USUARIOS WHERE CONTRASEÑA = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1,contraseña);
         ResultSet resultado = statement.executeQuery();
 
         return resultado.next();

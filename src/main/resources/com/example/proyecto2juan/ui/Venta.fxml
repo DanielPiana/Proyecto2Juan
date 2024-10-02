@@ -9,7 +9,8 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="com.example.proyecto2juan.Controller.VentaController">
    <children>
       <TableView fx:id="idTablaUsuarios" layoutX="59.0" layoutY="67.0" prefHeight="222.0" prefWidth="254.0">
         <columns>

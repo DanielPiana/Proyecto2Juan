@@ -1,6 +1,7 @@
 package com.example.proyecto2juan.Controller;
 
-import com.example.proyecto2juan.DAO.UsuarioDAO;
+import com.example.proyecto2juan.Clases.ConexionBBDD;
+import com.example.proyecto2juan.Main;
 import com.example.proyecto2juan.Util.Alerts;
 import com.example.proyecto2juan.domain.Usuario;
 import javafx.application.Platform;
@@ -16,31 +17,38 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.commons.codec.digest.DigestUtils;
-
+import static com.example.proyecto2juan.DAO.UsuarioDAO.buscarUsuarioLogin;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
+
 public class MainController implements Initializable {
 
-    public static void mostrarEscena (ActionEvent event, String fxml) throws IOException {
-        //Con este metodo cargamos y enseñamos una escena
-        FXMLLoader fxmlLoader = new FXMLLoader(MainController.class.getResource(fxml));
-        Parent root = new Pane();
-        //Creo una nueva escena
-        Scene scene = new Scene(root);
-        //Creo un botón y consigo el origen del botón que provocó el evento
-        Button boton = (Button) event.getSource();
-        //Creo el stage y consigo la escena en la que está el botón y la ventana de esa escena.
-        Stage stage = (Stage) boton.getScene().getWindow();
-        //Seteo la escena a la conseguida anteriormente
-        stage.setScene(scene);
-        //Si la ventana no estuviese visible, hacemos que sea visible.
-        if (!stage.isShowing()) {
-            stage.show();
+    public static void mostrarEscena (Button boton, String fxml){
+        try {
+            // CARGAR EL ARCHIVO FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
+            Parent root = fxmlLoader.load();
+            // OBTENER CONTROLLER
+            Object controller = fxmlLoader.getController();
+            Scene scene = new Scene(root); // CREAR UNA NUEVA ESCENA
+            // OBTENER EL STAGE ACTUAL A PARTIR DEL BOTON QUE SE HA CLICADO
+            Stage stage = (Stage) boton.getScene().getWindow();
+            stage.setScene(scene); // ESTABLECER LA NUEVA ESCENA AL STAGE ACTUAL
+            // MOSTRAR VENTANA SI NO ESTA VISIBLE
+            if (!stage.isShowing()) {
+                stage.show();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage()); // SI HAY ERROR EN LA CARGA DEL FXML, SE LANZA LA EXCEPCION
         }
     }
+
+
 
 
     @FXML
@@ -69,23 +77,24 @@ public class MainController implements Initializable {
 
     @FXML
     private TextField txtNombreCrear;
+    public static Connection con;
 
-
-    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     @FXML
     void onInicioSesionClick(ActionEvent event) throws IOException, SQLException {
         if (txtCorreoInicioSesion.getText().isEmpty() || txtContraseñaInicioSesion.getText().isEmpty()){
             Alerts.alertaGeneral("Debe rellenar todos los campos","WARNING");
         } else {
-            //Comprobar que el correo y la contraseña sea el mismo, antes de comprobar la contraseña tengo que encriptarla para ver si coincide
-            //Añadir un usuario de pruebas con correo 1 y contraseña 1, encriptarla, crear el usuario con el correo y la contraseña ya encriptada y
-            // mandarlo como parametro para buscarlo, si devuelve true, significa que si lo encuentra, coincide y cargamos fxml
-            String contraseñaCifrada = DigestUtils.sha256Hex(txtCorreoInicioSesion.getText());
+            //Primero ciframos la contraseña para poder contrastarla con la de la base de datos
+            String contraseñaCifrada = DigestUtils.sha256Hex(txtContraseñaInicioSesion.getText());
+            System.out.println("cifrafo de contraseña " + contraseñaCifrada);
+            //Creamos usuario con el correo y la contraseña cifrada
             Usuario usuario = new Usuario(txtCorreoInicioSesion.getText(),contraseñaCifrada);
-            //CONEXION NO ESTA FUNCIONANDO NO SE POR QUE
-            if (usuarioDAO.buscarUsuarioLogin(usuario)) {
-                mostrarEscena(event,"/com/example/proyecto2juan/ui/Venta.fxml");
+            if (buscarUsuarioLogin(con,usuario)) {
+                System.out.println("hola");
+                mostrarEscena(idButtonInicio,"ui/Venta.fxml");
+            }else {
+                System.out.println("adios");
             }
         }
 
@@ -100,7 +109,16 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            //Esto evita que el focus se ponga en un textfield y me quite el prompt
+        try {
+            con = ConexionBBDD.conectar();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //Esto evita que el focus se ponga en un textfield y me quite el prompt
             Platform.runLater(() -> idPaneRoot.requestFocus());
         }
 }

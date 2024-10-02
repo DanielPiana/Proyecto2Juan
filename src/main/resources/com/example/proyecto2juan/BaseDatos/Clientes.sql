@@ -7,9 +7,12 @@ CREATE TABLE Usuarios(
 Id int unsigned auto_increment primary key,
 NombreUsuario varchar(30),
 Contraseña varchar(64),
-Correo varchar(30)
+Correo varchar(30));
 
-
+CREATE TABLE Productos(
+Id int unsigned auto_increment primary key,
+Nombre varchar(30),
+Precio Double
 );
 INSERT INTO Usuarios  VALUES
 (1,"Juan Perez","bb86eee39ea8e390890e64b13249414449b2d8e8e64a851609a6fd87a1feb424","juanperez@gmail.com"),
@@ -18,4 +21,12 @@ INSERT INTO Usuarios  VALUES
 (4,"Ana Lopez","c8e3ac42e686793e93b1980e3e95b6d6052bfaadb50a829e28ce8c8af49dba74","analopez@gmail.com"),
 (5,"Luis Martinez","0c8580e0531cd3f95a47dd87017fd8cfafce082ca5a56a48423f303760475e31","luismartinez@gmail.com"),
 (6,"Sofia Hernandez","865655d0f4582d89c082c3fec8d0e4f25eb11ba5580336eff5ffcfb67f095b1e","sofiahernandez@gmail.com"),
-(7,"Pedro Sanchez","e9e5c06f45a15bda9905f0b9b88aea3711b17e68c1fc2d74007a751d5b65885b","pedrosanchez@gmail.com");
+(7,"Pedro Sanchez","e9e5c06f45a15bda9905f0b9b88aea3711b17e68c1fc2d74007a751d5b65885b","pedrosanchez@gmail.com"),
+(8,"1","6b86b273ff34fce19d6b804eff5a3f574f1f29b2b2e5c23c58c9f1eeb38f2440","1@1");
+
+INSERT INTO Productos VALUES
+(1,"EFT Arena Standard Edition","37.00"),
+(2,"EFT Standard Edition","52.00"),
+(3,"EFT Left Behind Edition","86.00"),
+(4,"EFT Prepare for Escape Edition","115.00"),
+(5,"EFT Unheard Edition","250.00");
