@@ -29,8 +29,8 @@
       </Label>
       <TableView fx:id="idTablaProductos" layoutX="323.0" layoutY="64.0" prefHeight="222.0" prefWidth="280.0">
          <columns>
-            <TableColumn fx:id="idColumNombreProd" prefWidth="163.0" text="Nombre" />
-            <TableColumn fx:id="idColumPrecioProd" prefWidth="116.0" text="Precio" />
+            <TableColumn fx:id="idColumNombreProd" prefWidth="184.0" text="Nombre" />
+            <TableColumn fx:id="idColumPrecioProd" prefWidth="95.0" text="Precio" />
          </columns>
       </TableView>
       <Button fx:id="idButtonProcesarVenta" layoutX="619.0" layoutY="286.0" mnemonicParsing="false" onAction="#onProcesarVentaClick" prefHeight="37.0" prefWidth="103.0" text="Procesar venta">
@@ -41,12 +41,7 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="86.0" layoutY="357.0" text="El total de la compra es: ">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="idTextTotalCompra" layoutX="262.0" layoutY="357.0">
+      <Label fx:id="idTextTotalCompra" layoutX="79.0" layoutY="400.0" text="Datos de la compra:">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
@@ -59,6 +54,30 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <ComboBox layoutX="619.0" layoutY="64.0" prefHeight="25.0" prefWidth="103.0" promptText="Cantidad" />
+      <ComboBox fx:id="cbCantidad" layoutX="619.0" layoutY="64.0" prefHeight="25.0" prefWidth="103.0" promptText="Cantidad" />
+      <Button fx:id="idButtonEliminarProducto" layoutX="324.0" layoutY="295.0" mnemonicParsing="false" onAction="#onEliminarProductoClick" prefHeight="31.0" prefWidth="131.0" text="Eliminar producto">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="idButtonEliminarUsuario" layoutX="28.0" layoutY="295.0" mnemonicParsing="false" onAction="#onEliminarUsuarioClick" prefHeight="31.0" prefWidth="131.0" text="Eliminar usuario">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="idButtonActualizarProducto" layoutX="324.0" layoutY="333.0" mnemonicParsing="false" onAction="#onActualizarProductoClick" prefHeight="31.0" prefWidth="131.0" text="Actualizar producto">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

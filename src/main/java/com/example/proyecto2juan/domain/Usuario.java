@@ -20,6 +20,10 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
+    public Usuario(String correo) {
+        this.correo = correo;
+    }
+
     public int getId() {
         return id;
     }

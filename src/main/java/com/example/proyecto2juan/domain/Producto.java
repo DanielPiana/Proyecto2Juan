@@ -10,6 +10,10 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public Producto(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Producto() {
     }
 

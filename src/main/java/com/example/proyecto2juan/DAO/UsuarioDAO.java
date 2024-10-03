@@ -60,7 +60,6 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 
