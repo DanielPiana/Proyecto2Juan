@@ -99,8 +99,6 @@ public class VentaController implements Initializable {
         } else {
             Alerts.alertaGeneral("Debe seleccionar un producto","WARNING");
         }
-
-
     }
 
     public void onEliminarUsuarioClick() {
@@ -168,8 +166,6 @@ public class VentaController implements Initializable {
             double precio = productoSeleccionado.getPrecio();
             //Pasamos el evento,nombre,precio y fxml al metodo de cargar escena con parametros
             Scenes.mostrarEscenaConParametros(event,nombre,precio,"ui/Actualizar.fxml");
-            //Volvemos a cargar la tabla para que se actualice y no muestre el producto borrado
-            cargarTablaProductos();
         } else {
             Alerts.alertaGeneral("Debe seleccionar un producto","WARNING");
         }

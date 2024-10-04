@@ -37,7 +37,7 @@ public class Scenes {
         //Creamos instancia del controlador del que pasamos datos
         ActualizarController actualizarController = fxmlLoader.getController();
         //Y ya tenemos acceso a los metodos del controller
-        actualizarController.display(nombre, precio);
+        actualizarController.displayProducto(nombre, precio);
         //Y por ultimo cargamos nuestro nuevo fxml con los datos establecidos correctamente
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
