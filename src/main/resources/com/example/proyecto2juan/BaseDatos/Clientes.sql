@@ -5,7 +5,7 @@ Use Clientes;
 
 CREATE TABLE Usuarios(
 Id int unsigned auto_increment primary key,
-NombreUsuario varchar(30),
+Nombre varchar(30),
 Contraseña varchar(64),
 Correo varchar(30));
 
@@ -22,7 +22,7 @@ INSERT INTO Usuarios  VALUES
 (5,"Luis Martinez","0c8580e0531cd3f95a47dd87017fd8cfafce082ca5a56a48423f303760475e31","luismartinez@gmail.com"),
 (6,"Sofia Hernandez","865655d0f4582d89c082c3fec8d0e4f25eb11ba5580336eff5ffcfb67f095b1e","sofiahernandez@gmail.com"),
 (7,"Pedro Sanchez","e9e5c06f45a15bda9905f0b9b88aea3711b17e68c1fc2d74007a751d5b65885b","pedrosanchez@gmail.com"),
-(8,"1","6b86b273ff34fce19d6b804eff5a3f574f1f29b2b2e5c23c58c9f1eeb38f2440","1@1");
+(8,"1","6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b","1");
 
 INSERT INTO Productos VALUES
 (1,"EFT Arena Standard Edition","37.00"),

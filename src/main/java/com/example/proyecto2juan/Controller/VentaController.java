@@ -3,6 +3,7 @@ package com.example.proyecto2juan.Controller;
 import com.example.proyecto2juan.DAO.ProductosDAO;
 import com.example.proyecto2juan.DAO.UsuarioDAO;
 import com.example.proyecto2juan.Util.Alerts;
+import com.example.proyecto2juan.Util.Scenes;
 import com.example.proyecto2juan.domain.Producto;
 import com.example.proyecto2juan.domain.Usuario;
 import javafx.beans.Observable;
@@ -18,11 +19,11 @@ import static com.example.proyecto2juan.Controller.MainController.con;
 import static com.example.proyecto2juan.DAO.UsuarioDAO.*;
 import static com.example.proyecto2juan.DAO.ProductosDAO.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static com.example.proyecto2juan.Controller.MainController.mostrarEscena;
+import static com.example.proyecto2juan.Util.Scenes.mostrarEscena;
 
 public class VentaController implements Initializable {
 
@@ -158,16 +159,15 @@ public class VentaController implements Initializable {
         cbCantidad.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
     }
 
-    public void onActualizarProductoClick() {
+    public void onActualizarProductoClick(ActionEvent event) throws IOException {
         //Consigo el producto seleccionado
         Producto productoSeleccionado = idTablaProductos.getSelectionModel().getSelectedItem();
         if (productoSeleccionado != null) {
-            //Creo un producto con el nombre, no necesitamos mas para el metodo de actualizar
-            Producto producto = new Producto(productoSeleccionado.getNombre());
-            //Actualizamos el producto
-
-
-
+            //Guardamos los datos en variables
+            String nombre = productoSeleccionado.getNombre();
+            double precio = productoSeleccionado.getPrecio();
+            //Pasamos el evento,nombre,precio y fxml al metodo de cargar escena con parametros
+            Scenes.mostrarEscenaConParametros(event,nombre,precio,"ui/Actualizar.fxml");
             //Volvemos a cargar la tabla para que se actualice y no muestre el producto borrado
             cargarTablaProductos();
         } else {

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -27,30 +28,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.example.proyecto2juan.DAO.UsuarioDAO.*;
+import static com.example.proyecto2juan.Util.Scenes.mostrarEscena;
 
 
 public class MainController implements Initializable {
-
-    public static void mostrarEscena (Button boton, String fxml){
-        try {
-            //Cargamos fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
-            Parent root = fxmlLoader.load();
-            //Obtenemos el controlador del fxml cargado
-            Object controller = fxmlLoader.getController();
-            //Creamos nueva escena con el root
-            Scene scene = new Scene(root);
-            //Obtenemos el stage del botón que ha causado el evento
-            Stage stage = (Stage) boton.getScene().getWindow();
-            //Seteamos el stage con la escena actual.
-            stage.setScene(scene);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-
 
     @FXML
     private TextField txtCorreoInicioSesion;
