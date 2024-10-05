@@ -6,7 +6,7 @@ import com.example.proyecto2juan.Util.Alerts;
 import com.example.proyecto2juan.Util.Scenes;
 import com.example.proyecto2juan.domain.Producto;
 import com.example.proyecto2juan.domain.Usuario;
-import javafx.beans.Observable;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 
 import static com.example.proyecto2juan.Controller.MainController.con;
 import static com.example.proyecto2juan.DAO.UsuarioDAO.*;
@@ -26,6 +27,9 @@ import java.util.ResourceBundle;
 import static com.example.proyecto2juan.Util.Scenes.mostrarEscena;
 
 public class VentaController implements Initializable {
+
+    @FXML
+    private Button idButtonActualizarUsuario;
 
     @FXML
     private Button idButtonEliminarProducto;
@@ -114,8 +118,6 @@ public class VentaController implements Initializable {
         } else {
             Alerts.alertaGeneral("Debe seleccionar un usuario","WARNING");
         }
-
-
     }
 
     public void onAtrasClick() {
@@ -170,4 +172,17 @@ public class VentaController implements Initializable {
             Alerts.alertaGeneral("Debe seleccionar un producto","WARNING");
         }
     }
+
+    public void onActualizarUsuarioClick(ActionEvent event) throws IOException {
+        Usuario usuarioseleccionado = idTablaUsuarios.getSelectionModel().getSelectedItem();
+        if (usuarioseleccionado != null) {
+            String nombre = usuarioseleccionado.getNombre();
+            String correo = usuarioseleccionado.getCorreo();
+            String contraseña = usuarioseleccionado.getContraseña();
+            Scenes.mostrarEscenaConParametrosUsuario(event,nombre,contraseña,correo,"ui/Actualizar.fxml");
+        } else {
+            Alerts.alertaGeneral("Debe seleccionar un usuario","WARNING");
+        }
+    }
+
 }

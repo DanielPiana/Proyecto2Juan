@@ -49,8 +49,7 @@ public class ProductosDAO {
         }
     }
     //El nombre del producto que quiero cambiar lo mando como parametro y los nuevos datos en el objeto.
-    //Habria que ver si es mejor hacerlo al reves, por el nuevo fxml.
-    public static void actualizarProducto(Connection con, Producto producto,String nombre) {
+    public static int actualizarProducto(Connection con, Producto producto,String nombre) {
         try {
             String sql = "UPDATE PRODUCTOS SET PRECIO = ?, NOMBRE = ? WHERE NOMBRE = ?";
             PreparedStatement statement = con.prepareStatement(sql);
@@ -59,9 +58,10 @@ public class ProductosDAO {
             statement.setString(2,producto.getNombre());
             statement.setString(3,nombre);
 
-            statement.executeUpdate();
+            return statement.executeUpdate();
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return 0;
     }
 }

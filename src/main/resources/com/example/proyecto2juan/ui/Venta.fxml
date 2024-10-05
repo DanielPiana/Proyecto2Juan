@@ -41,7 +41,7 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="idTextTotalCompra" layoutX="79.0" layoutY="400.0" text="Datos de la compra:">
+      <Label fx:id="idTextTotalCompra" layoutX="79.0" layoutY="400.0">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
@@ -72,6 +72,14 @@
          </font>
       </Button>
       <Button fx:id="idButtonActualizarProducto" layoutX="324.0" layoutY="333.0" mnemonicParsing="false" onAction="#onActualizarProductoClick" prefHeight="31.0" prefWidth="131.0" text="Actualizar producto">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="idButtonActualizarUsuario" layoutX="28.0" layoutY="333.0" mnemonicParsing="false" onAction="#onActualizarUsuarioClick" prefHeight="31.0" prefWidth="131.0" text="Actualizar usuario">
          <effect>
             <DropShadow />
          </effect>

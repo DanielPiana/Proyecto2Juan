@@ -1,6 +1,7 @@
 package com.example.proyecto2juan.DAO;
 
 import com.example.proyecto2juan.Main;
+import com.example.proyecto2juan.domain.Producto;
 import com.example.proyecto2juan.domain.Usuario;
 import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
@@ -29,6 +30,23 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    //Paso los parametros nuevos sueltos y los antiguos en el objeto
+    public static int actualizarUsuario(Connection con, Usuario usuario, String nombre,String contraseña,String correo) {
+        try {
+            String sql = "UPDATE USUARIOS SET NOMBRE = ?, CONTRASEÑA = ?, CORREO = ? WHERE CORREO = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+
+            statement.setString(1,nombre);
+            statement.setString(2,contraseña);
+            statement.setString(3,correo);
+            statement.setString(4, usuario.getCorreo());
+
+            return statement.executeUpdate();
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
     public static boolean comprobarDisponibilidadCorreo(Connection con,String correo) {
         try {

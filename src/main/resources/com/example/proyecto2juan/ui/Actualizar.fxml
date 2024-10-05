@@ -7,47 +7,123 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="316.0" style="-fx-background-color: #71bba7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto2juan.Controller.ActualizarController">
+<Pane prefHeight="321.0" prefWidth="316.0" style="-fx-background-color: #71bba7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto2juan.Controller.ActualizarController">
    <children>
-      <Label layoutX="14.0" layoutY="63.0" text="Nuevo nombre:">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="130.0" text="Nuevo precio:">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldNuevoNombre" layoutX="117.0" layoutY="59.0" />
-      <TextField fx:id="textFieldNuevoPrecio" layoutX="117.0" layoutY="126.0" />
-      <Button fx:id="idButtonActualizar" layoutX="34.0" layoutY="201.0" mnemonicParsing="false" onAction="#onActualizarButtonClick" prefHeight="33.0" prefWidth="84.0" text="Actualizar">
-         <effect>
-            <DropShadow />
-         </effect>
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Button>
-      <Label layoutX="14.0" layoutY="94.0" text="El precio anterior es:">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="26.0" text="El nombre anterior es:">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelAntiguoNombre" layoutX="149.0" layoutY="26.0" />
-      <Label fx:id="labelAntiguoPrecio" layoutX="135.0" layoutY="94.0" />
-      <Button fx:id="idButtonAtras" layoutX="182.0" layoutY="201.0" mnemonicParsing="false" onAction="#onAtrasButtonClick" prefHeight="33.0" prefWidth="84.0" text="Atrás">
-         <effect>
-            <DropShadow />
-         </effect>
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Button>
+      <Pane fx:id="idPanelProducto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="316.0" style="-fx-background-color: #71bba7;">
+         <children>
+            <Label layoutX="32.0" layoutY="94.0" text="Nuevo nombre:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="161.0" text="Nuevo precio:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNuevoNombre" layoutX="135.0" layoutY="90.0" />
+            <TextField fx:id="textFieldNuevoPrecio" layoutX="135.0" layoutY="157.0" />
+            <Button fx:id="idButtonActualizar" layoutX="52.0" layoutY="232.0" mnemonicParsing="false" onAction="#onActualizarButtonClick" prefHeight="33.0" prefWidth="84.0" text="Actualizar">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="32.0" layoutY="125.0" text="El precio anterior es:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="57.0" text="El nombre anterior es:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAntiguoNombre" layoutX="164.0" layoutY="57.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAntiguoPrecio" layoutX="160.0" layoutY="125.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="idButtonAtras" layoutX="200.0" layoutY="232.0" mnemonicParsing="false" onAction="#onAtrasButtonClick" prefHeight="33.0" prefWidth="84.0" text="Atrás">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="idPanelUsuario" prefHeight="321.0" prefWidth="316.0" style="-fx-background-color: #71bba7;">
+         <children>
+            <Button fx:id="idButtonAtras2" layoutX="202.0" layoutY="235.0" mnemonicParsing="false" onAction="#onAtras2ButtonClick" prefHeight="33.0" prefWidth="84.0" text="Atrás">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="idButtonActualizar2" layoutX="45.0" layoutY="235.0" mnemonicParsing="false" onAction="#onActualizar2ButtonClick" prefHeight="33.0" prefWidth="84.0" text="Actualizar">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtFieldNuevoNombreUsu" layoutX="153.0" layoutY="45.0" />
+            <TextField fx:id="txtfieldNuevaContraseña" layoutX="153.0" layoutY="144.0" />
+            <TextField fx:id="txtFieldConfContraseña" layoutX="153.0" layoutY="178.0" />
+            <Label layoutX="16.0" layoutY="49.0" text="Nuevo nombre:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="22.0" text="El nombre anterior es:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="78.0" prefHeight="17.0" prefWidth="123.0" text="El correo anterior es:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAntiguoCorreoUsu" layoutX="139.0" layoutY="78.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAntiguoNombreUsu" layoutX="144.0" layoutY="22.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="182.0" text="Confirmar contrseña:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="148.0" text="Contraseña:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFieldNuevoCorreo" layoutX="153.0" layoutY="106.0" />
+            <Label layoutX="16.0" layoutY="111.0" text="Nuevo correo:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

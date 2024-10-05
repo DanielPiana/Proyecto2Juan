@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Scenes {
     public static void mostrarEscena (Button boton, String fxml){
         try {
@@ -44,4 +45,18 @@ public class Scenes {
         stage.setScene(scene);
         stage.show();
     }
+    public static void mostrarEscenaConParametrosUsuario(ActionEvent event,String nombre,String contraseña,String correo,String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = fxmlLoader.load();
+        //Creamos instancia del controlador del que pasamos datos
+        ActualizarController actualizarController = fxmlLoader.getController();
+        //Y ya tenemos acceso a los metodos del controller
+        actualizarController.displayUsuario(nombre,correo,contraseña);
+        //Y por ultimo cargamos nuestro nuevo fxml con los datos establecidos correctamente
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
