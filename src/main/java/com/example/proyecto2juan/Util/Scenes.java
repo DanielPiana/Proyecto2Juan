@@ -35,7 +35,7 @@ public class Scenes {
     public static void mostrarEscenaConParametros(ActionEvent event,String nombre,double precio,String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Parent root = fxmlLoader.load();
-        //Creamos instancia del controlador del que pasamos datos
+        //Creamos instancia del controlador al que queremos pasar datos
         ActualizarController actualizarController = fxmlLoader.getController();
         //Y ya tenemos acceso a los metodos del controller
         actualizarController.displayProducto(nombre, precio);

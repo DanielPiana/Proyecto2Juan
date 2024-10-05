@@ -109,7 +109,6 @@ public class ActualizarController {
 
                         Alerts.alertaGeneral("Error al actualizar usuario","ERROR");
                     }
-                    //Seguir con codigo
                 } else {
                     Alerts.alertaGeneral("Ese correo no está disponible","INFORMATION");
                 }
