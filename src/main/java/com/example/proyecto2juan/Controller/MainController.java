@@ -1,25 +1,17 @@
 package com.example.proyecto2juan.Controller;
 
 import com.example.proyecto2juan.Clases.ConexionBBDD;
-import com.example.proyecto2juan.Main;
 import com.example.proyecto2juan.Util.Alerts;
 import com.example.proyecto2juan.domain.Usuario;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -86,19 +78,21 @@ public class MainController implements Initializable {
         if (txtNombreCrear.getText().isEmpty() || txtContraseñaCrear.getText().isEmpty() || txtConfContraseñaCrear.getText().isEmpty() || txtCorreoCrear.getText().isEmpty()) {
             Alerts.alertaGeneral("Debe rellenar todos los campos","WARNING");
         } else {
+            //Confirmamos que las contraseñas coincidan
             if (Objects.equals(txtContraseñaCrear.getText(), txtConfContraseñaCrear.getText())) {
+                //la ciframos para guardarla y comprobaciones
                 String contraseñaCifrada = DigestUtils.sha256Hex(txtContraseñaCrear.getText());
+                //Si el CheckBox no esta seleccionado no podrá seguir
                 if (cbPolitica.isSelected()) {
-                    System.out.println(txtCorreoCrear.getText());
+                    //Comprobamos que el correo esté disponible,y si está disponible, creamos usuario y lo añadimos, mandando una alerta de confirmación
                     if (!comprobarDisponibilidadCorreo(con,txtCorreoCrear.getText())) {
                         Usuario usuario = new Usuario(txtNombreCrear.getText(),contraseñaCifrada,txtCorreoCrear.getText());
                         añadirUsuario(con,usuario);
                         Alerts.alertaGeneral("Usuario registrado con éxito" +
-                                "\n Confirma tu cuenta logueandote","CONFIRMATION");
+                                "\nConfirma tu cuenta logueandote","CONFIRMATION");
                     } else {
                         Alerts.alertaGeneral("Ese correo no esta disponible","ERROR");
                     }
-                    //Comprobar que correo no este en uso y luego crear cuenta
                 } else {
                     Alerts.alertaGeneral("Lo siento, aceptar la política es obligatorio","WARNING");
                 }

@@ -1,17 +1,9 @@
 package com.example.proyecto2juan.DAO;
 
-import com.example.proyecto2juan.Main;
-import com.example.proyecto2juan.domain.Producto;
 import com.example.proyecto2juan.domain.Usuario;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-
-import javax.xml.transform.Result;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class UsuarioDAO {
 

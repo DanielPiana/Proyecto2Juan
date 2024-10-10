@@ -1,7 +1,5 @@
 package com.example.proyecto2juan.Controller;
 
-import com.example.proyecto2juan.DAO.ProductosDAO;
-import com.example.proyecto2juan.DAO.UsuarioDAO;
 import com.example.proyecto2juan.Util.Alerts;
 import com.example.proyecto2juan.Util.Scenes;
 import com.example.proyecto2juan.domain.Producto;

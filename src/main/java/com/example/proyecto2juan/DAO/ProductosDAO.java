@@ -1,8 +1,6 @@
 package com.example.proyecto2juan.DAO;
 
 import com.example.proyecto2juan.domain.Producto;
-import com.example.proyecto2juan.domain.Usuario;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
